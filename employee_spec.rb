@@ -25,4 +25,14 @@ describe Employee do
   it 'value defaults to zero if tax paid is not provided' do
     expect(Employee.new('Eric', 'Schmidt', '54000', '', '28').tax_paid).to eql(0)
   end
+
+  it 'should raise an error if a non-CSV file is provided' do
+    expect{ Employee.read_file('employees.txt') }.to raise_error
+  end
+
+  it 'should read from a CSV file' do
+    employees = Employee.read_file('tax_data.csv')
+    expect(employees.count).to eql(5)
+  end
+
 end

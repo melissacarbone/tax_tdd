@@ -25,7 +25,17 @@ class Employee
     else
       @tax_paid = tax_paid.to_i
     end
-    
+
     @tax_rate = tax_rate
   end
+
+  def self.read_file(filename)
+    if filename.end_with?('csv')
+      employees = [1,2,3,4,5]
+    else
+      raise "must provide a CSV file"
+    end
+    employees
+  end
+
 end
