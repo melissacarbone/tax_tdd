@@ -1,3 +1,5 @@
+require 'csv'
+
 class Employee
   attr_reader :first_name, :last_name, :annual_income, :tax_paid, :tax_rate
 
@@ -13,7 +15,7 @@ class Employee
     else
       @last_name = last_name
     end
-    
+
     if annual_income == ''
       @annual_income = 0
     else
@@ -31,7 +33,11 @@ class Employee
 
   def self.read_file(filename)
     if filename.end_with?('csv')
-      employees = [1,2,3,4,5]
+      employees = []
+      CSV.foreach(filename, headers: true) do |row|
+        employee = Employee.new(row[0], row[1], row[2], row[3], row[4])
+        employees << employee
+      end
     else
       raise "must provide a CSV file"
     end
