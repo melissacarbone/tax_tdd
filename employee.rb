@@ -1,3 +1,6 @@
+require 'pry'
+require 'csv'
+
 class Employee
   attr_reader :first_name, :last_name, :annual_income, :tax_paid, :tax_rate
 
@@ -28,10 +31,13 @@ class Employee
 
     @tax_rate = tax_rate
   end
-
+#binding.pry
   def self.read_file(filename)
     if filename.end_with?('csv')
-      employees = [1,2,3,4,5]
+      employees = []
+      CSV.foreach(filename, headers: true) do |row|
+        employees << row
+      end
     else
       raise "must provide a CSV file"
     end
