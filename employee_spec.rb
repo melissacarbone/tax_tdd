@@ -1,5 +1,6 @@
 require 'rspec'
 require_relative 'employee.rb'
+require 'pry'
 
 describe Employee do
 
