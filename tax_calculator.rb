@@ -6,11 +6,11 @@ class TaxCalculator
   def self.liability(employee)
     amount = self.refund_due(employee)
     if self.refund_due(employee) > 0
-      amount_due = amount
-      amount_owed = 0
-    else
       amount_due = 0
-      amount_owed = amount.abs
+      amount_owed = amount
+    else
+      amount_due = amount.abs
+      amount_owed = 0
     end
     Liability.new(employee, amount_due, amount_owed)
   end
