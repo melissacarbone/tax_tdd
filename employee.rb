@@ -16,7 +16,7 @@ class Employee
     else
       @last_name = last_name
     end
-    
+
     if annual_income == ''
       @annual_income = 0
     else
@@ -31,7 +31,7 @@ class Employee
 
     @tax_rate = tax_rate
   end
-#binding.pry
+
   def self.read_file(filename)
     if filename.end_with?('csv')
       employees = []

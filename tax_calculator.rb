@@ -4,10 +4,32 @@ require_relative 'liability.rb'
 class TaxCalculator
 
   def self.liability(employee)
-    amount_owed = 0
-    amount_due = 21000
+    amount = self.refund_due(employee)
+    if self.refund_due(employee) > 0
+      amount_due = amount
+      amount_owed = 0
+    else
+      amount_due = 0
+      amount_owed = amount.abs
+    end
     Liability.new(employee, amount_due, amount_owed)
   end
 
+private
+
+  def self.tax_owed(employee)
+    (employee.annual_income)*(employee.tax_rate).to_i
+  end
+
+  def self.refund_due(employee)
+    employee.tax_paid.to_i - self.tax_owed(employee)
+  end
 end
+
+
+
+
+
+
+
 

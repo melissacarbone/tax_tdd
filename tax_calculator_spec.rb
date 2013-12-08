@@ -4,7 +4,7 @@ require_relative 'employee.rb'
 require_relative 'liability.rb'
 require 'pry'
 
-describe TaxCalculator do 
+describe TaxCalculator do
 
   it 'should return an instance of the Liability class' do
     employee = Employee.new("Liz", "Lemon", 0, 21000, 30)
@@ -12,6 +12,6 @@ describe TaxCalculator do
     amount_due = 21000
 
     expect(TaxCalculator.liability(employee)).to be_an_instance_of(Liability)
-  
+
   end
 end
