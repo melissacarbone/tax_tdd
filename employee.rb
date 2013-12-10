@@ -36,7 +36,7 @@ class Employee
     if filename.end_with?('csv')
       employees = []
       CSV.foreach(filename, headers: true) do |row|
-        employees << row
+        employees << Employee.new(row[0], row[1], row[2], row[3], row[4])
       end
     else
       raise "must provide a CSV file"
