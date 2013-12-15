@@ -1,5 +1,6 @@
 require_relative 'employee.rb'
 require_relative 'liability.rb'
+require 'pry'
 
 class TaxCalculator
 
@@ -16,9 +17,8 @@ class TaxCalculator
   end
 
 private
-
   def self.tax_owed(employee)
-    (employee.annual_income)*(employee.tax_rate).to_i
+    (employee.annual_income)*((employee.tax_rate).to_i)/100
   end
 
   def self.refund_due(employee)

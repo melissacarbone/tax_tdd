@@ -11,4 +11,5 @@ employees.each do |employee|
     else
     puts "#{employee.first_name} #{employee.last_name} has a tax liability of #{liability.amount_owed}."
     end
+
   end
